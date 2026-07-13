@@ -1,6 +1,6 @@
 import pickle
 import seaborn as sns
-import matplotlib as plt
+import matplotlib.pyplot as plt
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
