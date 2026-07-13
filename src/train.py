@@ -1,4 +1,6 @@
 import pickle
+import seaborn as sns
+import matplotlib as plt
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
@@ -84,4 +86,19 @@ def save_model(model, vectorizer):
 
 save_model(model, vectorizer)
 print("model saved")
+
+#from claude AI
+def plot_confusion_matrix(cm, labels):
+    plt.figure(figsize=(6, 5))
+    sns.heatmap(cm, annot=True, fmt='d', cmap="Blues", xticklabels=labels, yticklabels=labels)
+    plt.xlabel("Predicted")
+    plt.ylabel("Actual")
+    plt.title("Confusion Matrix")
+    plt.savefig("outputs/confusion_matrix.png")
+    plt.show()
+
+results = evaluate_model(model, X_test, y_test)
+
+plot_confusion_matrix(results["confusion_matrix"], model.classes_)
+
 print("DONE!")
